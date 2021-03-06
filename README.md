@@ -58,5 +58,4 @@ elso cella | masodik cella
 
 emoji:  :grinning:   :smiley:  :laughing: :rofl:
 
-
-Ezt az A branchből írom.
+Resolved conflict.

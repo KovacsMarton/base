@@ -50,5 +50,14 @@ public class TrainSystemTest {
 		Assert.assertEquals(0, controller.getReferenceSpeed());
 	}
 
+	@Test
+	public void OverridingJoystickPositionToPositive_IncreasesSpeed(){ //negatívból pozitívba eset.
+		user.overrideJoystickPosition(-5);
+		controller.followSpeed();
+		user.overrideJoystickPosition(10);
+		controller.followSpeed();
+		Assert.assertEquals(5,controller.getReferenceSpeed());
+	}
+
 	
 }

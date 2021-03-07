@@ -5,3 +5,7 @@ subprojects {
     jcenter()
   }
 }
+dependencies {
+
+
+}

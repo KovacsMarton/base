@@ -26,7 +26,7 @@ public class TrainSystemTest {
 	}
 	
 	@Test
-	public void OverridingJoystickPosition_IncreasesReferenceSpeed() {
+	public void OverridingJoystickPosition_IncreasesReferenceSpeed() throws InterruptedException {
 		sensor.overrideSpeedLimit(10);
 
 		Assert.assertEquals(0, controller.getReferenceSpeed());
@@ -42,7 +42,7 @@ public class TrainSystemTest {
 	}
 
 	@Test
-	public void OverridingJoystickPositionToNegative_SetsReferenceSpeedToZero() {
+	public void OverridingJoystickPositionToNegative_SetsReferenceSpeedToZero() throws InterruptedException {
 		user.overrideJoystickPosition(4);
 		controller.followSpeed();
 		user.overrideJoystickPosition(-5);
@@ -51,13 +51,16 @@ public class TrainSystemTest {
 	}
 
 	@Test
-	public void OverridingJoystickPositionToPositive_IncreasesSpeed(){ //negatívból pozitívba eset.
+	public void OverridingJoystickPositionToPositive_IncreasesSpeed() throws InterruptedException { //negatívból pozitívba eset.
 		user.overrideJoystickPosition(-5);
 		controller.followSpeed();
 		user.overrideJoystickPosition(10);
 		controller.followSpeed();
 		Assert.assertEquals(10,controller.getReferenceSpeed());
 		// 0 -> 0, majd 0 -> 10.
+
+
+		// a két teszt már nem jól demonstrálja a funkció működését.
 	}
 
 	

@@ -41,7 +41,7 @@ public class TrainUserImpl implements TrainUser {
 		else if(joystickPosition  < 0){
 			while(controller.getReferenceSpeed() != 0){
 				controller.followSpeed();
-				Thread.sleep(1000);
+				Thread.sleep(controller.getTime()*1000);
 			}
 		}
 

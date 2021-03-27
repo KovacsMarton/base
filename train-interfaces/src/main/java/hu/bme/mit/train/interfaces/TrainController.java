@@ -12,4 +12,6 @@ public interface TrainController {
 
 	int getSpeedLimit();
 
+	int getTime();
+
 }

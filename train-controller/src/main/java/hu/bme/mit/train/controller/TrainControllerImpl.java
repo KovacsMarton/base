@@ -2,7 +2,7 @@ package hu.bme.mit.train.controller;
 
 import hu.bme.mit.train.interfaces.TrainController;
 
-import java.util.concurrent.TimeUnit;
+
 
 public class TrainControllerImpl implements TrainController {
 
@@ -11,6 +11,11 @@ public class TrainControllerImpl implements TrainController {
 
 
 	private int speedLimit = 0;
+
+	public int getTIME_IN_SECONDS() {
+		return TIME_IN_SECONDS;
+	}
+
 	private int TIME_IN_SECONDS = 1;
 
 	@Override
@@ -51,15 +56,7 @@ public class TrainControllerImpl implements TrainController {
 	@Override
 	public void setJoystickPosition(int joystickPosition) throws InterruptedException {
 		this.step = joystickPosition;
-/*
-if(referenceSpeed < speedLimit){
-		while(referenceSpeed != speedLimit){
-			if(referenceSpeed == speedLimit)
-				break;
-			followSpeed();
-			Thread.sleep(TIME_IN_SECONDS*1000);
-		}}
-*/
+
 
 	}
 

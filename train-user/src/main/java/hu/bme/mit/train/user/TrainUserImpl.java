@@ -24,11 +24,31 @@ public class TrainUserImpl implements TrainUser {
 	}
 
 	@Override
-	public void overrideJoystickPosition(int joystickPosition) {
+	public void overrideJoystickPosition(int joystickPosition) throws InterruptedException {
 		this.joystickPosition = joystickPosition;
 		controller.setJoystickPosition(joystickPosition);
 		joystickMoveCount++;
+		//this.controller.followSpeed(); //  előző feladat része volt, kikommentezem
+
+
+
+		if(joystickPosition > 0 ){
+			while(controller.getReferenceSpeed() != controller.getSpeedLimit()){
+				controller.followSpeed();
+				Thread.sleep(1000);
+			}
+		}
+		else if(joystickPosition  < 0){
+			while(controller.getReferenceSpeed() != 0){
+				controller.followSpeed();
+				Thread.sleep(controller.getTime()*1000);
+			}
+		}
+
+
+
 	}
+
 
 	public int getJoystickMoveCount() {
 		return joystickMoveCount;

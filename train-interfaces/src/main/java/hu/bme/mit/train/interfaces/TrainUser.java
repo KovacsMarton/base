@@ -8,4 +8,7 @@ public interface TrainUser {
 
 	void overrideJoystickPosition(int joystickPosition) throws InterruptedException;
 
+	boolean getAlarmState();
+	boolean setAlarmState(boolean alarmState);
+
 }

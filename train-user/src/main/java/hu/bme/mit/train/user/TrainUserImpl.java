@@ -8,10 +8,13 @@ public class TrainUserImpl implements TrainUser {
 	private TrainController controller;
 	private int joystickPosition;
 	private int joystickMoveCount;
+	private boolean alarmState;
 
 	public TrainUserImpl(TrainController controller) {
 		this.controller = controller;
 	}
+
+
 
 	@Override
 	public boolean getAlarmFlag() {
@@ -24,11 +27,41 @@ public class TrainUserImpl implements TrainUser {
 	}
 
 	@Override
-	public void overrideJoystickPosition(int joystickPosition) {
+	public void overrideJoystickPosition(int joystickPosition) throws InterruptedException {
 		this.joystickPosition = joystickPosition;
 		controller.setJoystickPosition(joystickPosition);
 		joystickMoveCount++;
+		//this.controller.followSpeed(); //  előző feladat része volt, kikommentezem
+
+
+
+		if(joystickPosition > 0 ){
+			while(controller.getReferenceSpeed() != controller.getSpeedLimit()){
+				controller.followSpeed();
+				Thread.sleep(1000);
+			}
+		}
+		else if(joystickPosition  < 0){
+			while(controller.getReferenceSpeed() != 0){
+				controller.followSpeed();
+				Thread.sleep(controller.getTime() * (long)1000);
+			}
+		}
+
+
+
 	}
+
+	@Override
+	public boolean getAlarmState() {
+		return false;
+	}
+
+	@Override
+	public boolean setAlarmState(boolean alarmState) {
+		return false;
+	}
+
 
 	public int getJoystickMoveCount() {
 		return joystickMoveCount;

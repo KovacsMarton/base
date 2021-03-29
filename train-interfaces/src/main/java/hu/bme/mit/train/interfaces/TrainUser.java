@@ -6,6 +6,9 @@ public interface TrainUser {
 
 	boolean getAlarmFlag();
 
-	void overrideJoystickPosition(int joystickPosition);
+	void overrideJoystickPosition(int joystickPosition) throws InterruptedException;
+
+	boolean getAlarmState();
+	boolean setAlarmState(boolean alarmState);
 
 }
